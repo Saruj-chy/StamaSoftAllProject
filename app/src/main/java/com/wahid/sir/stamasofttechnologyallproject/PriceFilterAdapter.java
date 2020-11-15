@@ -15,13 +15,13 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class CountryFilterAdapter extends RecyclerView.Adapter<CountryFilterAdapter.CountryViewHolder> {
+public class PriceFilterAdapter extends RecyclerView.Adapter<PriceFilterAdapter.CountryViewHolder> {
 
 
     private Context mCtx;
     private List<Country> countryList;
 
-    public CountryFilterAdapter(Context mCtx, List<Country> productList) {
+    public PriceFilterAdapter(Context mCtx, List<Country> productList) {
         this.mCtx = mCtx;
         this.countryList = productList;
     }
@@ -50,7 +50,7 @@ public class CountryFilterAdapter extends RecyclerView.Adapter<CountryFilterAdap
 
 
         holder.textViewName.setText(country.getName());
-        holder.textViewStatus.setText(String.valueOf(country.getCountry()));
+        holder.textViewStatus.setText(String.valueOf(country.getPrice()));
 
 
         Log.d("TAG", "name: "+ country.getImage() ) ;
@@ -61,9 +61,9 @@ public class CountryFilterAdapter extends RecyclerView.Adapter<CountryFilterAdap
                 Intent intent = new Intent(mCtx, DetailsActivity.class) ;
                 intent.putExtra("id", country.getId()) ;
                 intent.putExtra("name",country.getName()) ;
-                intent.putExtra("country", country.getCountry()) ;
+                intent.putExtra("price", country.getPrice()) ;
                 intent.putExtra("image", country.getImage()) ;
-                intent.putExtra("type", "country") ;
+                intent.putExtra("type", "price") ;
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mCtx.startActivity(intent);
 //                Toast.makeText(mCtx, "yes", Toast.LENGTH_SHORT).show();

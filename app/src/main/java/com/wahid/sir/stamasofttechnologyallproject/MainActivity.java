@@ -21,7 +21,7 @@ import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button mPhnBtn, mCountryBtn, mLocationBtn  ;
+    Button mPhnBtn, mCountryBtn, mLocationBtn, mPriceBtn  ;
 
     //=====  location
     Location currentLocation;
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         mPhnBtn = findViewById(R.id.phone_btn);
         mCountryBtn = findViewById(R.id.country_btn);
+        mPriceBtn = findViewById(R.id.price_btn);
         mLocationBtn = findViewById(R.id.location_btn);
 
         mPhnBtn.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mPriceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), FilterPriceActivity.class);
+                startActivity(i);
+            }
+        });
+
         //====    location user
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -66,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
 
     private void GetLocation() {
