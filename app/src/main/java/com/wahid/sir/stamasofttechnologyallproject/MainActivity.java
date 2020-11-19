@@ -1,6 +1,5 @@
 package com.wahid.sir.stamasofttechnologyallproject;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -18,10 +17,14 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterPriceActivity;
+import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterViewCountryActivity;
+import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterViewPhoneActivity;
+import com.wahid.sir.stamasofttechnologyallproject.Activity.LoadMoreDataActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button mPhnBtn, mCountryBtn, mLocationBtn, mPriceBtn  ;
+    Button mPhnBtn, mCountryBtn, mLocationBtn, mPriceBtn, mMoreDataBtn  ;
 
     //=====  location
     Location currentLocation;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mPhnBtn = findViewById(R.id.phone_btn);
         mCountryBtn = findViewById(R.id.country_btn);
         mPriceBtn = findViewById(R.id.price_btn);
+        mMoreDataBtn = findViewById(R.id.more_data_btn);
         mLocationBtn = findViewById(R.id.location_btn);
 
         mPhnBtn.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), FilterPriceActivity.class);
+                startActivity(i);
+            }
+        });
+
+        mMoreDataBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LoadMoreDataActivity.class);
                 startActivity(i);
             }
         });

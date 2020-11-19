@@ -1,4 +1,4 @@
-package com.wahid.sir.stamasofttechnologyallproject;
+package com.wahid.sir.stamasofttechnologyallproject.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.wahid.sir.stamasofttechnologyallproject.Activity.DetailsActivity;
+import com.wahid.sir.stamasofttechnologyallproject.Class.Country;
+import com.wahid.sir.stamasofttechnologyallproject.R;
 
 import java.util.List;
 

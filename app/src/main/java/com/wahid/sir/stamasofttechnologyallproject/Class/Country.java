@@ -1,4 +1,4 @@
-package com.wahid.sir.stamasofttechnologyallproject;
+package com.wahid.sir.stamasofttechnologyallproject.Class;
 
 import java.lang.reflect.Field;
 
