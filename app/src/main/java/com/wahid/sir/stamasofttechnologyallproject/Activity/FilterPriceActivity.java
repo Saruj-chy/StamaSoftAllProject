@@ -1,4 +1,4 @@
-package com.wahid.sir.stamasofttechnologyallproject;
+package com.wahid.sir.stamasofttechnologyallproject.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -16,6 +16,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.wahid.sir.stamasofttechnologyallproject.Class.Country;
+import com.wahid.sir.stamasofttechnologyallproject.Adapter.PriceFilterAdapter;
+import com.wahid.sir.stamasofttechnologyallproject.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,34 +27,31 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterViewCountryActivity extends AppCompatActivity {
+public class FilterPriceActivity extends AppCompatActivity {
 
-    private static final String URL_PRODUCTS = "http://192.168.1.6/android/StamaSoft_Technology/filterSearch/getCountryName.php";
+    private static final String URL_PRODUCTS = "http://192.168.1.8/android/StamaSoft_Technology/filterSearch/getPriceName.php";
 
     private EditText mFilterEdit ;
     private RecyclerView mRecyclerView ;
-    private List<Country> mCountryList;
-    private CountryFilterAdapter adapter ;
-
+    private List<Country> mPhoneList;
+    private PriceFilterAdapter adapter ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filter_view_country);
+        setContentView(R.layout.activity_filter_price);
 
         mFilterEdit = findViewById(R.id.edit_filter) ;
-        mRecyclerView = findViewById(R.id.country_recyclerView) ;
+        mRecyclerView = findViewById(R.id.price_recyclerView) ;
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mCountryList = new ArrayList<>();
+        mPhoneList = new ArrayList<>();
 
         loadProducts();
 
         //===============   search option
         AddTextChange();
-
-
     }
 
     public void AddTextChange(){
@@ -78,12 +78,12 @@ public class FilterViewCountryActivity extends AppCompatActivity {
     private void filter(String text) {
         List<Country> filteredList = new ArrayList<>();
 
-        for (Country item : mCountryList) {
+        for (Country item : mPhoneList) {
 
             if (item.getName().toLowerCase().contains(text.toLowerCase())){
                 filteredList.add(item);
             }
-            if(item.getCountry().toLowerCase().contains(text.toLowerCase())){
+            if(String.valueOf(item.getPrice()).toLowerCase().contains(text.toLowerCase())){
                 filteredList.add(item);
             }
         }
@@ -110,22 +110,22 @@ public class FilterViewCountryActivity extends AppCompatActivity {
                                 Log.e("serverResponse", "product: "+ product ) ;
 
                                 //adding the product to product list
-                                mCountryList.add(new Country(
-                                        product.getString("id"),
+                                mPhoneList.add(new Country(
+                                        product.getInt("id"),
                                         product.getString("name"),
-                                        product.getString("country"),
-                                        product.getString("image")
+                                        product.getString("image"),
+                                        product.getDouble("price")
                                 ));
                             }
-                            Log.e("serverResponse", "mCountryList: "+mCountryList) ;
+                            Log.e("serverResponse", "mCountryList: "+ mPhoneList) ;
 //
-                            adapter = new CountryFilterAdapter(getApplicationContext(), mCountryList);
+                            adapter = new PriceFilterAdapter(getApplicationContext(), mPhoneList);
                             mRecyclerView.setAdapter(adapter);
                             GridLayoutManager manager = new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
                             mRecyclerView.setLayoutManager(manager);
 
 //                            Toast.makeText(MainActivity.this, "successfull", Toast.LENGTH_LONG).show();
-                        } catch (JSONException  e) {
+                        } catch (JSONException e) {
                             e.printStackTrace();
                             Log.e("serverResponseError", "error: "+e.toString() );
 

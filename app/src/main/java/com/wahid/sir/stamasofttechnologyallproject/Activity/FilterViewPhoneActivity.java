@@ -1,4 +1,4 @@
-package com.wahid.sir.stamasofttechnologyallproject;
+package com.wahid.sir.stamasofttechnologyallproject.Activity;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,6 +16,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.wahid.sir.stamasofttechnologyallproject.Class.Country;
+import com.wahid.sir.stamasofttechnologyallproject.Adapter.PhoneFilterAdapter;
+import com.wahid.sir.stamasofttechnologyallproject.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,12 +29,12 @@ import java.util.List;
 
 public class FilterViewPhoneActivity extends AppCompatActivity {
 
-    private static final String URL_PRODUCTS = "http://192.168.1.6/android/StamaSoft_Technology/filterSearch/getPhoneName.php";
+    private static final String URL_PRODUCTS = "http://192.168.1.8/android/StamaSoft_Technology/filterSearch/getPhoneName.php";
 
     private EditText mFilterEdit ;
     private RecyclerView mRecyclerView ;
     private List<Country> mPhoneList;
-    private CountryFilterAdapter adapter ;
+    private PhoneFilterAdapter adapter ;
 
 
     @Override
@@ -83,7 +86,7 @@ public class FilterViewPhoneActivity extends AppCompatActivity {
             if (item.getName().toLowerCase().contains(text.toLowerCase())){
                 filteredList.add(item);
             }
-            if(item.getCountry().toLowerCase().contains(text.toLowerCase())){
+            if(String.valueOf(item.getPhone()).toLowerCase().contains(text.toLowerCase())){
                 filteredList.add(item);
             }
         }
@@ -111,15 +114,15 @@ public class FilterViewPhoneActivity extends AppCompatActivity {
 
                                 //adding the product to product list
                                 mPhoneList.add(new Country(
-                                        product.getString("id"),
+                                        product.getInt("id"),
                                         product.getString("name"),
-                                        product.getString("phone"),
-                                        product.getString("image")
+                                        product.getString("image"),
+                                        product.getInt("phone")
                                 ));
                             }
                             Log.e("serverResponse", "mCountryList: "+ mPhoneList) ;
 //
-                            adapter = new CountryFilterAdapter(getApplicationContext(), mPhoneList);
+                            adapter = new PhoneFilterAdapter(getApplicationContext(), mPhoneList);
                             mRecyclerView.setAdapter(adapter);
                             GridLayoutManager manager = new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
                             mRecyclerView.setLayoutManager(manager);

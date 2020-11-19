@@ -7,16 +7,30 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/phone_btn"
+    android:id="@+id/phone_btn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="200dp"
+    android:text="Phone Number Filtering"
+    android:textAllCaps="false"
+    app:layout_constraintHorizontal_bias="0.529"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/price_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="Phone Number Filtering"
+        android:layout_marginTop="40dp"
+        android:text="Price Filtering"
         android:textAllCaps="false"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/phone_btn"
+
+        />
 
     <Button
         android:id="@+id/country_btn"
@@ -27,8 +41,20 @@
         android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_btn"
+        app:layout_constraintTop_toBottomOf="@+id/price_btn"
          />
+
+    <Button
+        android:id="@+id/more_data_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="More Data Load"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/country_btn"
+        />
 
     <Button
         android:id="@+id/location_btn"
@@ -39,7 +65,7 @@
         android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/country_btn"
+        app:layout_constraintTop_toBottomOf="@+id/more_data_btn"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
