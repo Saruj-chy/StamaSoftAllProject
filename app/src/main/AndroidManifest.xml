@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.LoadMoreDataActivity"></activity>
+        <activity android:name=".Activity.MoreDataDatabaseActivity"></activity>
+        <activity android:name=".Activity.LoadMoreDataActivity" />
         <activity android:name=".Activity.FilterPriceActivity" />
         <activity android:name=".Activity.DetailsActivity" />
         <activity android:name=".Activity.LocationActivity" />

@@ -29,7 +29,7 @@ import java.util.List;
 
 public class FilterPriceActivity extends AppCompatActivity {
 
-    private static final String URL_PRODUCTS = "http://192.168.1.8/android/StamaSoft_Technology/filterSearch/getPriceName.php";
+    private static final String URL_PRODUCTS = "http://192.168.1.10/android/StamaSoft_Technology/filterSearch/getPriceName.php";
 
     private EditText mFilterEdit ;
     private RecyclerView mRecyclerView ;
@@ -127,7 +127,7 @@ public class FilterPriceActivity extends AppCompatActivity {
 //                            Toast.makeText(MainActivity.this, "successfull", Toast.LENGTH_LONG).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Log.e("serverResponseError", "error: "+e.toString() );
+                            Log.e("serverResponse", "error: "+e.toString() );
 
                         }
                     }
@@ -135,7 +135,7 @@ public class FilterPriceActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.e("serverResponse", "error: "+error.toString() );
                     }
                 });
 

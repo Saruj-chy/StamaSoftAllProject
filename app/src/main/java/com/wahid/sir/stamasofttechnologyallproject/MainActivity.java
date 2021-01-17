@@ -21,10 +21,11 @@ import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterPriceActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterViewCountryActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterViewPhoneActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.LoadMoreDataActivity;
+import com.wahid.sir.stamasofttechnologyallproject.Activity.MoreDataDatabaseActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button mPhnBtn, mCountryBtn, mLocationBtn, mPriceBtn, mMoreDataBtn  ;
+    Button mPhnBtn, mCountryBtn, mLocationBtn, mPriceBtn, mMoreDatabaseBtn, mMoreDataBtn  ;
 
     //=====  location
     Location currentLocation;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mCountryBtn = findViewById(R.id.country_btn);
         mPriceBtn = findViewById(R.id.price_btn);
         mMoreDataBtn = findViewById(R.id.more_data_btn);
+        mMoreDatabaseBtn = findViewById(R.id.more_data_database_btn);
         mLocationBtn = findViewById(R.id.location_btn);
 
         mPhnBtn.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +73,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), LoadMoreDataActivity.class);
+                startActivity(i);
+            }
+        });
+        mMoreDatabaseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MoreDataDatabaseActivity.class);
                 startActivity(i);
             }
         });

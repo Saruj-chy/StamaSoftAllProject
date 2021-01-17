@@ -29,7 +29,7 @@ import java.util.List;
 
 public class FilterViewCountryActivity extends AppCompatActivity {
 
-    private static final String URL_PRODUCTS = "http://192.168.1.8/android/StamaSoft_Technology/filterSearch/getCountryName.php";
+    private static final String URL_PRODUCTS = "http://192.168.1.10/android/StamaSoft_Technology/filterSearch/getCountryName.php";
 
     private EditText mFilterEdit ;
     private RecyclerView mRecyclerView ;
