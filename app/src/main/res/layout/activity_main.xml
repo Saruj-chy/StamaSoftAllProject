@@ -8,9 +8,9 @@
 
     <Button
     android:id="@+id/phone_btn"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="200dp"
+    android:layout_marginTop="50dp"
     android:text="Phone Number Filtering"
     android:textAllCaps="false"
     app:layout_constraintHorizontal_bias="0.529"
@@ -21,7 +21,7 @@
 
     <Button
         android:id="@+id/price_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Price Filtering"
@@ -34,7 +34,7 @@
 
     <Button
         android:id="@+id/country_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Country Filtering"
@@ -46,7 +46,7 @@
 
     <Button
         android:id="@+id/more_data_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="More Data Load"
@@ -57,15 +57,27 @@
         />
 
     <Button
+        android:id="@+id/more_data_database_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="More Data Load from Local Database"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/more_data_btn"
+        />
+
+    <Button
         android:id="@+id/location_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Location Pick"
         android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/more_data_btn"
+        app:layout_constraintTop_toBottomOf="@+id/more_data_database_btn"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

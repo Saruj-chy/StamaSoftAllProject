@@ -1,6 +1,5 @@
 package com.wahid.sir.stamasofttechnologyallproject.Activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -19,6 +20,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wahid.sir.stamasofttechnologyallproject.Adapter.LoadMoreDataAdapter;
+import com.wahid.sir.stamasofttechnologyallproject.Adapter.PriceFilterAdapter;
+import com.wahid.sir.stamasofttechnologyallproject.Class.Country;
 import com.wahid.sir.stamasofttechnologyallproject.Class.MoreData;
 import com.wahid.sir.stamasofttechnologyallproject.R;
 
@@ -29,17 +32,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoadMoreDataActivity extends AppCompatActivity {
-    private static final String URL_PRODUCTS = "https://jsonplaceholder.typicode.com/posts";
+public class MoreDataDatabaseActivity extends AppCompatActivity {
+    private static final String URL_PRODUCTS = "http://192.168.1.10/android/StamaSoft_Technology/filterSearch/getPriceName.php";
 
     private EditText mFilterEdit ;
     private RecyclerView mRecyclerView ;
-    private List<MoreData> mDataList ;
-    private LoadMoreDataAdapter adapter ;
+    private List<Country> mDataList ;
+    private PriceFilterAdapter adapter ;
 
     private int totalItemCount, pastVisiblesItems,  visibleItemCount, page =1, previousTotal ;
     private boolean loading = true ;
-    private  GridLayoutManager manager ;
+    private GridLayoutManager manager ;
 
     private ProgressBar progressbar;
     private int testLast = 0, lengthArray=0;
@@ -47,7 +50,7 @@ public class LoadMoreDataActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_load_more_data);
+        setContentView(R.layout.activity_more_data_database);
 
         mFilterEdit = findViewById(R.id.edit_load) ;
         mRecyclerView = findViewById(R.id.load_recyclerView) ;
@@ -58,33 +61,29 @@ public class LoadMoreDataActivity extends AppCompatActivity {
         mDataList = new ArrayList<>();
 
         loadProducts(0);
-
-
     }
 
-
-
-
-
+    
     private void loadProducts(final int number) {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_PRODUCTS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-//                        Log.e("TAGs", "response: "+response );
+                        Log.e("TAGs", "response: "+response );
                         try {
-                            JSONArray array = new JSONArray(response);
+                            JSONObject array = new JSONObject(response);
+                            JSONArray resultArray = array.getJSONArray("result");
 
-                            lengthArray = array.length() ;
+                            lengthArray = resultArray.length() ;
 
-                            ForLoadMoreData(array, number) ; //initial load data
+                            ForLoadMoreData(resultArray, number) ; //initial load data
 
-                            adapter = new LoadMoreDataAdapter(getApplicationContext(), mDataList);
+                            adapter = new PriceFilterAdapter(getApplicationContext(), mDataList);
                             mRecyclerView.setAdapter(adapter);
                             manager = new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
                             mRecyclerView.setLayoutManager(manager);
 
-                            loadMoreData(array) ;
+                            loadMoreData(resultArray) ;
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -112,11 +111,11 @@ public class LoadMoreDataActivity extends AppCompatActivity {
             try {
                 product = array.getJSONObject(i);
 
-                mDataList.add(new MoreData(
-                        product.getInt("userId"),
+                mDataList.add(new Country(
                         product.getInt("id"),
-                        product.getString("title"),
-                        product.getString("body")
+                        product.getString("name"),
+                        product.getString("image"),
+                        product.getDouble("price")
                 ));
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -164,7 +163,5 @@ public class LoadMoreDataActivity extends AppCompatActivity {
         progressbar.setVisibility(View.GONE);
         adapter.notifyDataSetChanged();
     }
-
-
 
 }
