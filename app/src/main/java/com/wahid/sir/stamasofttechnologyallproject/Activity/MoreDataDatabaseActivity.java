@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -19,10 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.wahid.sir.stamasofttechnologyallproject.Adapter.LoadMoreDataAdapter;
 import com.wahid.sir.stamasofttechnologyallproject.Adapter.PriceFilterAdapter;
+import com.wahid.sir.stamasofttechnologyallproject.Class.Config;
 import com.wahid.sir.stamasofttechnologyallproject.Class.Country;
-import com.wahid.sir.stamasofttechnologyallproject.Class.MoreData;
 import com.wahid.sir.stamasofttechnologyallproject.R;
 
 import org.json.JSONArray;
@@ -33,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MoreDataDatabaseActivity extends AppCompatActivity {
-    private static final String URL_PRODUCTS = "http://192.168.1.10/android/StamaSoft_Technology/filterSearch/getPriceName.php";
 
     private EditText mFilterEdit ;
     private RecyclerView mRecyclerView ;
@@ -65,7 +61,7 @@ public class MoreDataDatabaseActivity extends AppCompatActivity {
 
     
     private void loadProducts(final int number) {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_PRODUCTS,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config.MORE_DATABASE_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

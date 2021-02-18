@@ -2,17 +2,25 @@ package com.wahid.sir.stamasofttechnologyallproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,11 +29,22 @@ import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterPriceActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterViewCountryActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterViewPhoneActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.LoadMoreDataActivity;
+import com.wahid.sir.stamasofttechnologyallproject.Activity.LoginActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.MoreDataDatabaseActivity;
+import com.wahid.sir.stamasofttechnologyallproject.Adapter.PriceFilterAdapter;
+import com.wahid.sir.stamasofttechnologyallproject.Class.Config;
+import com.wahid.sir.stamasofttechnologyallproject.Class.Country;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button mPhnBtn, mCountryBtn, mLocationBtn, mPriceBtn, mMoreDatabaseBtn, mMoreDataBtn  ;
+    Button mPhnBtn, mCountryBtn, mLocationBtn, mPriceBtn, mMoreDatabaseBtn, mMoreDataBtn, mEmailSentBtn  ;
 
     //=====  location
     Location currentLocation;
@@ -44,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         mMoreDataBtn = findViewById(R.id.more_data_btn);
         mMoreDatabaseBtn = findViewById(R.id.more_data_database_btn);
         mLocationBtn = findViewById(R.id.location_btn);
+        mEmailSentBtn = findViewById(R.id.email_sent_btn);
 
         mPhnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +101,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), MoreDataDatabaseActivity.class);
                 startActivity(i);
+            }
+        });
+
+        mEmailSentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+//                loadProducts();
+                Log.i("Send email", "");
+
             }
         });
 
@@ -124,6 +155,35 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    private void loadProducts() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.MAIL_SENT_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("serverResponse", "error: "+error.toString() );
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                String email = "durjoy.chy222@gmail.com" ;
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("email", email);
+                return parameters;
+            }
+
+        };
+
+        //adding our stringrequest to queue
+        Volley.newRequestQueue(this).add(stringRequest);
     }
 
 

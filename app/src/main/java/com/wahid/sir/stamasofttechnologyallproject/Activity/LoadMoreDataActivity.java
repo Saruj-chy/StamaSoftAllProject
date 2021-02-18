@@ -1,6 +1,5 @@
 package com.wahid.sir.stamasofttechnologyallproject.Activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -19,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wahid.sir.stamasofttechnologyallproject.Adapter.LoadMoreDataAdapter;
+import com.wahid.sir.stamasofttechnologyallproject.Class.Config;
 import com.wahid.sir.stamasofttechnologyallproject.Class.MoreData;
 import com.wahid.sir.stamasofttechnologyallproject.R;
 
@@ -30,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoadMoreDataActivity extends AppCompatActivity {
-    private static final String URL_PRODUCTS = "https://jsonplaceholder.typicode.com/posts";
 
     private EditText mFilterEdit ;
     private RecyclerView mRecyclerView ;
@@ -67,7 +65,7 @@ public class LoadMoreDataActivity extends AppCompatActivity {
 
 
     private void loadProducts(final int number) {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_PRODUCTS,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config.LOAD_MORE_DATA_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
