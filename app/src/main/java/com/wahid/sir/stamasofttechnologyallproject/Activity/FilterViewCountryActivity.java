@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wahid.sir.stamasofttechnologyallproject.Adapter.CountryFilterAdapter;
+import com.wahid.sir.stamasofttechnologyallproject.Class.Config;
 import com.wahid.sir.stamasofttechnologyallproject.Class.Country;
 import com.wahid.sir.stamasofttechnologyallproject.R;
 
@@ -29,7 +30,6 @@ import java.util.List;
 
 public class FilterViewCountryActivity extends AppCompatActivity {
 
-    private static final String URL_PRODUCTS = "http://192.168.1.10/android/StamaSoft_Technology/filterSearch/getCountryName.php";
 
     private EditText mFilterEdit ;
     private RecyclerView mRecyclerView ;
@@ -95,7 +95,7 @@ public class FilterViewCountryActivity extends AppCompatActivity {
 
 
     private void loadProducts() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_PRODUCTS,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config.FILTER_COUNTRY_PRODUCTS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

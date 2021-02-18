@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.LoginActivity">
+
+    <EditText
+        android:id="@+id/edit_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your email..."
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:layout_marginTop="200dp"
+        />
+
+    <EditText
+        android:id="@+id/edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your password..."
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:layout_below="@+id/edit_email"
+        android:layout_marginTop="20dp"
+
+        />
+    <TextView
+        android:id="@+id/text_forget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_password"
+        android:text="forget password?"
+        android:textSize="14dp"
+        android:textColor="@android:color/black"
+        android:padding="5dp"
+        android:gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+
+        />
+
+    <Button
+        android:id="@+id/btn_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:textAllCaps="false"
+        android:layout_below="@+id/edit_password"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        />
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textSize="18dp"
+        android:padding="5dp"
+        android:textAllCaps="false"
+        android:layout_below="@+id/edit_password"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+
+        android:layout_marginTop="50dp"
+        />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:textSize="18dp"
+        android:visibility="gone"
+        android:padding="5dp"
+        android:textAllCaps="false"
+        android:layout_below="@+id/edit_password"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        />
+
+    <TextView
+        android:id="@+id/text_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_password"
+        android:text="Back"
+        android:textSize="14dp"
+        android:visibility="gone"
+        android:textColor="@android:color/black"
+        android:padding="5dp"
+        android:gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+
+        />
+
+</RelativeLayout>
