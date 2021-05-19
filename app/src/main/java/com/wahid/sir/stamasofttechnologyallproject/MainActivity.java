@@ -25,12 +25,15 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.wahid.sir.stamasofttechnologyallproject.Activity.DateDifferenceActivity;
+import com.wahid.sir.stamasofttechnologyallproject.Activity.DateFromToActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterPriceActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterViewCountryActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterViewPhoneActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.LoadMoreDataActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.LoginActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.MoreDataDatabaseActivity;
+import com.wahid.sir.stamasofttechnologyallproject.Activity.RegistrationActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Adapter.PriceFilterAdapter;
 import com.wahid.sir.stamasofttechnologyallproject.Class.Config;
 import com.wahid.sir.stamasofttechnologyallproject.Class.Country;
@@ -44,7 +47,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button mPhnBtn, mCountryBtn, mLocationBtn, mPriceBtn, mMoreDatabaseBtn, mMoreDataBtn, mEmailSentBtn  ;
+    Button mPhnBtn, mCountryBtn, mLocationBtn, mPriceBtn, mMoreDatabaseBtn, mMoreDataBtn, mEmailSentBtn, mSmsGatewayBtn  ;
 
     //=====  location
     Location currentLocation;
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         mMoreDatabaseBtn = findViewById(R.id.more_data_database_btn);
         mLocationBtn = findViewById(R.id.location_btn);
         mEmailSentBtn = findViewById(R.id.email_sent_btn);
+        mSmsGatewayBtn = findViewById(R.id.sms_gateway_btn);
 
         mPhnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +112,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+//                loadProducts();
+                Log.i("Send email", "");
+
+            }
+        });
+
+        mSmsGatewayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), RegistrationActivity.class);
                 startActivity(i);
 //                loadProducts();
                 Log.i("Send email", "");
@@ -187,4 +202,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void onDateDifference(View view) {
+        Intent i = new Intent(getApplicationContext(), DateDifferenceActivity.class);
+        startActivity(i);
+    }
+
+
+    public void onDateFromTo(View view) {
+        Intent i = new Intent(getApplicationContext(), DateFromToActivity.class);
+        startActivity(i);
+    }
 }

@@ -16,7 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.LoginActivity"></activity>
+        <activity android:name=".Activity.DateFromToActivity"/>
+        <activity android:name=".Activity.DateDifferenceActivity" />
+        <activity android:name=".Activity.Success" />
+        <activity android:name=".Activity.RegistrationActivity" />
+        <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.MoreDataDatabaseActivity" />
         <activity android:name=".Activity.LoadMoreDataActivity" />
         <activity android:name=".Activity.FilterPriceActivity" />
