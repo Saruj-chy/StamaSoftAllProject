@@ -136,6 +136,19 @@
                app:layout_constraintRight_toRightOf="parent"
                app:layout_constraintTop_toBottomOf="@+id/date_select_fromto"
                />
+
+
+           <Button
+               android:id="@+id/camera_image_btn"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:text="Camera and Image Pick"
+               android:textAllCaps="false"
+               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintRight_toRightOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/location_btn"
+               />
        </androidx.constraintlayout.widget.ConstraintLayout>
    </ScrollView>
 
