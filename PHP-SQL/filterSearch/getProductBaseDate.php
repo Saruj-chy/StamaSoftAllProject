@@ -15,7 +15,7 @@ mysqli_query($con,"SET SESSION collation_connection ='utf8_general_ci'");
 
 
 
- $r = getFromToDate($con, $from_date, $to_date);
+ $r = getPhoneName($con, $from_date, $to_date);
 //  var_dump($r);
  $ProductArray = array();
  while($row=$r->fetch_array(MYSQLI_ASSOC)){
@@ -31,10 +31,9 @@ $response['result'] = $ProductArray;
 echo json_encode($response) ;
 
 
- function getFromToDate($con, $from_date, $to_date ){
+ function getPhoneName($con, $from_date, $to_date ){
      $sql = "SELECT * FROM `product_details_with_date` WHERE `entrydate`>='$from_date' AND `entrydate`<= '$to_date' order by `entrydate` ";
-     $sql = "SELECT * FROM `product_details_with_date` WHERE `entrydate`>='$from_date' AND `entrydate`<= '$to_date' order by `entrydate` ";
-//   echo $sql;
+
   $r = mysqli_query($con,$sql) ;
   return $r ;
  }

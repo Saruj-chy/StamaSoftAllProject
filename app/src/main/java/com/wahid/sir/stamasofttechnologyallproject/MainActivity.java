@@ -25,6 +25,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.wahid.sir.stamasofttechnologyallproject.Activity.CameraImageActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.DateDifferenceActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.DateFromToActivity;
 import com.wahid.sir.stamasofttechnologyallproject.Activity.FilterPriceActivity;
@@ -47,7 +48,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button mPhnBtn, mCountryBtn, mLocationBtn, mPriceBtn, mMoreDatabaseBtn, mMoreDataBtn, mEmailSentBtn, mSmsGatewayBtn  ;
+    Button mPhnBtn, mCountryBtn, mLocationBtn, mPriceBtn, mMoreDatabaseBtn, mMoreDataBtn, mEmailSentBtn, mSmsGatewayBtn , mCameraImageBtn ;
 
     //=====  location
     Location currentLocation;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         mLocationBtn = findViewById(R.id.location_btn);
         mEmailSentBtn = findViewById(R.id.email_sent_btn);
         mSmsGatewayBtn = findViewById(R.id.sms_gateway_btn);
+        mCameraImageBtn = findViewById(R.id.camera_image_btn);
 
         mPhnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +141,14 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(), "latitude: "+latitude+ "longitude: "+longitude, Toast.LENGTH_LONG).show();
 
                 GetLocation();
+            }
+        });
+
+        mCameraImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), CameraImageActivity.class);
+                startActivity(i);
             }
         });
     }
